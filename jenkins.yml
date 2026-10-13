@@ -1,1 +1,33 @@
 
+tasks:
+    - name: Create Jenkins Job
+      jenkins_job:
+        url: "http://localhost:8080"
+        user: "admin"
+        password: "admin"
+        name: "my-test-job"
+	config: |
+          <project>
+            <actions/>
+            <description>My Test job</description>
+            <keepDependencies>false</keepDependencies>
+            <properties/>
+            <scm class="hudson.scm.NullSCM"/>
+            <canRoam>true</canRoam>
+            <disabled>false</disabled>
+            <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+            <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+            <triggers/>
+            <concurrentBuild>false</concurrentBuild>
+            <builders/>
+            <publishers/>
+            <buildWrappers/>
+          </project>
+
+    - name: Delete Jenkins Job
+      jenkins_job:
+	url: "http://localhost:8080"
+	user: "admin"
+	password: "admin"
+	name: "my-test-job"
+	state: absent
